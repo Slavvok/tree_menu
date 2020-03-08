@@ -1,4 +1,5 @@
-<li><a href="{{path}}">{{ menu.name }}</a>
+{% load tags %}
+<li><a href="{{path}}" {% if request.path|current_path:menu.slug %} style="color: red" {% endif %}>{{ menu.name }}</a>
     <ul>
     {% if menu.children %}
         {% if "/"|add:menu.slug|add:"/" in request.path %}
