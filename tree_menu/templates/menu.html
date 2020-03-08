@@ -1,0 +1,7 @@
+<ul>
+    {% for menu in menus %}
+        {% with path="/menus/"|add:menu.slug|add:"/" %}
+            {% include "submenu.html" %}
+        {% endwith %}
+    {% endfor %}
+</ul>

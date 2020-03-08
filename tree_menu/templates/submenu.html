@@ -1,0 +1,13 @@
+<li><a href="{{path}}">{{ menu.name }}</a>
+    <ul>
+    {% if menu.children %}
+        {% if "/"|add:menu.slug|add:"/" in request.path %}
+            {% for child in menu.children.all %}
+                {% with menu=child path=path|add:child.slug|add:"/" template_name="submenu.html" %}
+                       {% include template_name %}
+                {% endwith %}
+            {% endfor %}
+        {% endif %}
+    {% endif %}
+    </ul>
+</li>
